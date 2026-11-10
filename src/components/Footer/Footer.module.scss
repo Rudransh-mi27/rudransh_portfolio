@@ -1,0 +1,119 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  position: relative;
+  border-top: 1px solid $border-subtle;
+  padding: 60px 0 40px;
+  background: rgba(7, 7, 9, 0.6);
+  backdrop-filter: blur(12px);
+  z-index: 2;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @include respond-to('tablet') {
+    padding: 0 $container-padding-mobile;
+  }
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid $border-subtle;
+  margin-bottom: 30px;
+
+  @include respond-to('mobile') {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+.brandTitle {
+  font-family: $font-sans;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: $text-primary;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.brandSerif {
+  font-family: $font-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #d4d4d8;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+.brandSubtitle {
+  font-size: 0.85rem;
+  color: $text-muted;
+}
+
+.scrollTopBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $text-secondary;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $border-subtle;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include respond-to('mobile') {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.copyright {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-muted;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 14px;
+}
+
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid $border-subtle;
+  @include flex-center;
+  color: $text-muted;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: #ffffff;
+    border-color: $border-medium;
+  }
+}
+

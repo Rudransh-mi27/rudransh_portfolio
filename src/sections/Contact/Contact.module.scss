@@ -1,0 +1,389 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.contactSection {
+  position: relative;
+  padding: 120px 0 100px;
+  border-top: 1px solid $border-subtle;
+  z-index: 2;
+
+  @include respond-to('tablet') {
+    padding: 80px 0 60px;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @include respond-to('tablet') {
+    padding: 0 $container-padding-mobile;
+  }
+}
+
+.sectionHeader {
+  margin-bottom: 56px;
+  max-width: 750px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: $text-secondary;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.badgeIndex {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.badgeDivider {
+  color: $text-muted;
+}
+
+.sectionTitle {
+  font-family: $font-sans;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: $text-primary;
+  margin-bottom: 16px;
+}
+
+.serifItalic {
+  font-family: $font-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #e4e4e7;
+}
+
+.sectionSubtitle {
+  color: $text-secondary;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+
+  @include respond-to('tablet') {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.directCard {
+  @include glass-panel;
+  padding: 32px;
+  border-radius: 16px;
+  border-color: rgba(255, 255, 255, 0.1);
+
+  @include respond-to('mobile') {
+    padding: 24px;
+  }
+}
+
+.directLabel {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: $text-muted;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.emailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $border-subtle;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.emailTextWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emailIcon {
+  color: $text-muted;
+  flex-shrink: 0;
+}
+
+.emailLink {
+  font-family: $font-mono;
+  font-size: 0.95rem;
+  color: $text-primary;
+  font-weight: 500;
+  word-break: break-all;
+
+  &:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid $border-subtle;
+  border-radius: 6px;
+  color: $text-secondary;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.16);
+  }
+}
+
+.checkIcon {
+  color: #ffffff;
+}
+
+.metaInfoList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $text-secondary;
+  font-size: 0.92rem;
+}
+
+.phoneLink {
+  color: $text-secondary;
+  font-family: $font-mono;
+  font-size: 0.9rem;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.socialGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.socialCard {
+  @include glass-panel;
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $border-medium;
+    transform: translateY(-2px);
+
+    .arrowIcon {
+      transform: translate(2px, -2px);
+      color: #ffffff;
+    }
+  }
+}
+
+.socialIconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $border-subtle;
+  @include flex-center;
+  color: $text-primary;
+  flex-shrink: 0;
+}
+
+.socialMeta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.platformName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.profileHandle {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-muted;
+}
+
+.arrowIcon {
+  color: $text-muted;
+  transition: transform $transition-fast, color $transition-fast;
+}
+
+.formCol {
+  width: 100%;
+}
+
+.formCard {
+  @include glass-panel;
+  padding: 36px;
+  border-radius: 16px;
+  border-color: rgba(255, 255, 255, 0.1);
+
+  @include respond-to('mobile') {
+    padding: 24px;
+  }
+}
+
+.formHeading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $text-primary;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input,
+.textarea {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid $border-subtle;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: border-color $transition-fast, background-color $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #000000;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 8px;
+  transition: all $transition-fast;
+  margin-top: 8px;
+
+  &:hover {
+    background: #e4e4e7;
+    transform: translateY(-1px);
+  }
+}
+
+.successMessage {
+  padding: 32px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  h4 {
+    font-size: 1.2rem;
+    color: $text-primary;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $text-secondary;
+    max-width: 380px;
+    line-height: 1.5;
+  }
+}
+
+.successIcon {
+  color: #ffffff;
+}
+
+.resetBtn {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $text-secondary;
+  text-decoration: underline;
+  margin-top: 8px;
+  cursor: pointer;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+

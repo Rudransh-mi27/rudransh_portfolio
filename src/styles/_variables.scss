@@ -1,0 +1,43 @@
+// SCSS Variables - Minimal Dark Aesthetic
+
+// Colors
+$bg-primary: #070709;
+$bg-secondary: #0c0d10;
+$bg-tertiary: #121318;
+$bg-elevated: #161820;
+$bg-card: rgba(18, 19, 24, 0.7);
+
+$text-primary: #f5f5f7;
+$text-secondary: #9a9aa2;
+$text-muted: #5e606b;
+$text-accent: #e4e4e7;
+
+$border-subtle: rgba(255, 255, 255, 0.07);
+$border-medium: rgba(255, 255, 255, 0.12);
+$border-strong: rgba(255, 255, 255, 0.2);
+
+$accent-subtle: rgba(255, 255, 255, 0.05);
+$accent-hover: rgba(255, 255, 255, 0.1);
+$accent-indicator: #ffffff; // monochrome platinum indicator
+$accent-indicator-glow: rgba(255, 255, 255, 0.25);
+
+// Typography
+$font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', Roboto, sans-serif;
+$font-serif: 'Cormorant Garamond', Garamond, Georgia, 'Times New Roman', serif;
+$font-mono: 'Fira Code', 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+// Spacing
+$container-max-width: 1240px;
+$container-padding-desktop: 48px;
+$container-padding-mobile: 20px;
+
+// Transitions
+$transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-medium: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+// Breakpoints
+$breakpoint-mobile: 640px;
+$breakpoint-tablet: 960px;
+$breakpoint-desktop: 1200px;
+

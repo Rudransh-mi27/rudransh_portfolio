@@ -1,0 +1,364 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.heroSection {
+  position: relative;
+  min-height: 105vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 110px 0 60px;
+
+  @include respond-to('tablet') {
+    padding: 100px 0 50px;
+    min-height: 100vh;
+  }
+}
+
+/* ==========================================================================
+   LAYER 1: Deep Background Typography & Ambient Atmosphere (z-index: 1)
+   ========================================================================== */
+.layerBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bgTypographyWrap {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  user-select: none;
+  opacity: 0.75;
+}
+
+.bgGiantTitle {
+  font-family: $font-serif;
+  font-size: clamp(6rem, 20vw, 19rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  color: rgba(255, 255, 255, 0.04);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bgGiantSubtitle {
+  font-family: $font-mono;
+  font-size: clamp(0.72rem, 1.4vw, 1.15rem);
+  letter-spacing: 0.5em;
+  color: rgba(255, 255, 255, 0.03);
+  text-transform: uppercase;
+  margin-top: 16px;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 850px;
+  height: 850px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(60px);
+}
+
+/* ==========================================================================
+   LAYER 2: Full-Screen Portrait Layer Spanning Across Viewport (z-index: 2)
+   Firmly Below Meta Bar Line so hair/head starts after that line
+   ========================================================================== */
+.layerPortrait {
+  position: absolute;
+  top: 190px; // Starts comfortably below the meta bar line
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - 190px);
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+
+  @include respond-to('tablet') {
+    top: 165px;
+    height: calc(100% - 165px);
+  }
+}
+
+.portraitContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1350px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform-origin: center bottom;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.portraitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top; // Top of head is positioned right under top: 190px
+  filter: brightness(0.96) contrast(1.04);
+
+  @include respond-to('tablet') {
+    object-position: center 8%;
+    transform: scale(1.08);
+  }
+}
+
+.portraitVignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #070709 8%, rgba(7, 7, 9, 0.6) 20%, transparent 42%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   LAYER 3: Foreground Text, Headlines & Interactive Elements (z-index: 3)
+   ========================================================================== */
+.layerForeground {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(105vh - 170px);
+
+  @include respond-to('tablet') {
+    min-height: calc(100vh - 150px);
+  }
+}
+
+.heroContainer {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+
+  @include respond-to('tablet') {
+    padding: 0 $container-padding-mobile;
+  }
+}
+
+/* Top Meta Bar - Clean without dividing line */
+.metaBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+
+  @include respond-to('mobile') {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+.statusIndicator {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: rgba(10, 11, 15, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+}
+
+.statusText {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: $text-primary;
+  text-transform: uppercase;
+}
+
+.locationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: $text-muted;
+  text-transform: uppercase;
+}
+
+.locationIcon {
+  color: $text-secondary;
+}
+
+/* Spacer ensuring face, eyes, neck, and shoulders are completely unobstructed */
+.faceClearanceSpacer {
+  height: clamp(320px, 46vh, 540px);
+  pointer-events: none;
+}
+
+/* Name, Quote & Actions positioned across/at the level of the chest */
+.heroContentBelowShoulder {
+  text-align: center;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding-bottom: 24px;
+}
+
+.mainTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 20px;
+  font-size: clamp(3.4rem, 8.8vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.95);
+}
+
+.titlePrimary {
+  font-family: $font-sans;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.titleSerif {
+  font-family: $font-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #e4e4e7;
+  letter-spacing: -0.02em;
+}
+
+.editorialTagline {
+  font-family: $font-serif;
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.3vw, 1.65rem);
+  color: #e4e4e7;
+  max-width: 680px;
+  margin: 0 auto 30px;
+  line-height: 1.4;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
+}
+
+.heroActionRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 8px;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all $transition-fast;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    background: #e4e4e7;
+    transform: translateY(-2px);
+  }
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  background: rgba(10, 11, 15, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: $text-primary;
+  border-radius: 8px;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+}
+
+.socialPillsWrap {
+  display: flex;
+  gap: 10px;
+}
+
+.socialPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: $font-mono;
+  font-size: 0.74rem;
+  color: $text-secondary;
+  padding: 8px 16px;
+  background: rgba(10, 11, 15, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+
+    .arrow {
+      transform: translate(1px, -1px);
+      color: #ffffff;
+    }
+  }
+}
+
+.arrow {
+  color: $text-muted;
+  transition: transform $transition-fast, color $transition-fast;
+}

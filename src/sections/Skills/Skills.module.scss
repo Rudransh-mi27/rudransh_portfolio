@@ -1,0 +1,226 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.skillsSection {
+  position: relative;
+  padding: 120px 0;
+  border-top: 1px solid $border-subtle;
+  z-index: 2;
+
+  @include respond-to('tablet') {
+    padding: 80px 0;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+
+  @include respond-to('tablet') {
+    padding: 0 $container-padding-mobile;
+  }
+}
+
+.sectionHeader {
+  margin-bottom: 56px;
+  max-width: 750px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: $text-secondary;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.badgeIndex {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.badgeDivider {
+  color: $text-muted;
+}
+
+.sectionTitle {
+  font-family: $font-sans;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: $text-primary;
+  margin-bottom: 16px;
+}
+
+.serifItalic {
+  font-family: $font-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #e4e4e7;
+}
+
+.sectionSubtitle {
+  color: $text-secondary;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryCard {
+  @include glass-panel;
+  padding: 28px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: transform $transition-medium, border-color $transition-medium;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: $border-medium;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid $border-subtle;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $border-subtle;
+  @include flex-center;
+  color: $text-primary;
+  flex-shrink: 0;
+}
+
+.categoryTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $text-primary;
+  letter-spacing: -0.01em;
+}
+
+.categoryNote {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-top: 2px;
+}
+
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: $border-subtle;
+    transform: translateX(3px);
+  }
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: $text-muted;
+  transition: background $transition-fast;
+
+  .skillItem:hover & {
+    background: #ffffff;
+  }
+}
+
+.skillName {
+  font-size: 0.88rem;
+  font-family: $font-mono;
+  color: $text-secondary;
+
+  .skillItem:hover & {
+    color: $text-primary;
+  }
+}
+
+.stackBanner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  @include glass-panel;
+  padding: 32px;
+  border-radius: 16px;
+  border-color: rgba(255, 255, 255, 0.1);
+
+  @include respond-to('tablet') {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.bannerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bannerTag {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-muted;
+}
+
+.bannerValue {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.bannerDesc {
+  font-size: 0.88rem;
+  color: $text-secondary;
+  line-height: 1.5;
+}
+
