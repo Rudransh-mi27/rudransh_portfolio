@@ -10,7 +10,6 @@ import Experience from '@/sections/Experience/Experience';
 import Achievements from '@/sections/Achievements/Achievements';
 import Contact from '@/sections/Contact/Contact';
 import Footer from '@/components/Footer/Footer';
-import CustomCursor from '@/components/Cursor/CustomCursor';
 import { useLenis } from '@/hooks/useLenis';
 
 // Dynamically import Three.js canvas to prevent SSR hydration mismatches
@@ -27,9 +26,6 @@ export default function Home() {
     <>
       {/* Interactive WebGL particle wave canvas */}
       <BackgroundCanvas />
-
-      {/* Smooth bespoke interactive cursor */}
-      <CustomCursor />
 
       {/* Persistent dynamic navbar */}
       <Navbar />

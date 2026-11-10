@@ -1,0 +1,188 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.controlsRoot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.categoryBar {
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.45rem;
+  background: rgba(14, 14, 20, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  pointer-events: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-width: calc(100% - 2rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    top: 0.75rem;
+    left: 0.75rem;
+    transform: none;
+    max-width: calc(100% - 1.5rem);
+    border-radius: 12px;
+  }
+}
+
+.catTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  &.activeTab {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
+
+    .catDot {
+      transform: scale(1.3);
+      box-shadow: 0 0 8px var(--tab-color);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.65rem;
+  }
+}
+
+.catDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catLabel {
+  text-transform: uppercase;
+}
+
+.hudWidget {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.65rem 1rem;
+  background: rgba(14, 14, 20, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  pointer-events: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 768px) {
+    bottom: 1rem;
+    left: 1rem;
+    padding: 0.5rem 0.75rem;
+    gap: 0.75rem;
+  }
+}
+
+.telemetry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding-right: 1.25rem;
+
+  @media (max-width: 768px) {
+    display: none; // Keep HUD compact on mobile
+  }
+}
+
+.telemetryRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: $font-mono;
+  font-size: 0.62rem;
+}
+
+.telemetryLabel {
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.08em;
+  min-width: 76px;
+}
+
+.telemetryValue {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.actionBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.18s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.btnDivider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 0.15rem;
+}
+

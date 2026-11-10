@@ -38,7 +38,7 @@ export default function Footer() {
 
         <div className={styles.bottomRow}>
           <p className={styles.copyright}>
-            &copy; {new Date().getFullYear()} Rudransh Mishra. Engineered with Next.js, Three.js &amp; SCSS.
+            &copy; {new Date().getFullYear()} Rudransh Mishra.
           </p>
 
           <div className={styles.socialLinks}>
