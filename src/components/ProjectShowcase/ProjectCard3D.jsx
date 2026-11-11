@@ -1,46 +1,29 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import { ExternalLink, ArrowUpRight, Sparkles, Terminal, Code2 } from 'lucide-react';
+import { ExternalLink, Terminal } from 'lucide-react';
 import { GithubIcon } from '@/components/Icons/SocialIcons';
 import styles from './ProjectCard3D.module.scss';
 
 export default function ProjectCard3D({
   project,
   index,
-  total,
-  isSelected,
   isHovered,
-  isDimmed,
-  layoutTransform,
   onHover,
   onLeave,
   onClick,
 }) {
-  const cardRef = useRef(null);
-
   const isCompleted = project.status === 'Completed';
-
-  // When hovered: card becomes significantly bigger, lifts forward, and straightens to face the user cleanly without any shaking
-  const dynamicTransform = isHovered
-    ? `${layoutTransform} scale(1.24) translateZ(160px) rotateY(10deg) rotateX(-5deg)`
-    : `${layoutTransform} scale(1) translateZ(0px)`;
 
   return (
     <div
-      ref={cardRef}
-      className={`${styles.cardContainer} ${isHovered ? styles.hovered : ''} ${isDimmed ? styles.dimmed : ''} ${isSelected ? styles.selected : ''}`}
-      style={{
-        transform: dynamicTransform,
-        zIndex: isHovered ? 120 : total - index,
-      }}
+      className={`${styles.cardContainer} ${isHovered ? styles.hovered : ''}`}
       onMouseEnter={() => onHover(project.id)}
       onMouseLeave={onLeave}
       onClick={() => onClick(project)}
       role="button"
       tabIndex={0}
-      aria-label={project.title}
+      aria-label={`${project.title} - Click to bring forward`}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -50,7 +33,7 @@ export default function ProjectCard3D({
     >
       {/* Floating 3D Panel */}
       <div className={styles.windowFrame}>
-        {/* Browser / Viewport Window Header */}
+        {/* Browser Header */}
         <div className={styles.windowHeader}>
           <div className={styles.windowControls} aria-hidden="true">
             <span className={`${styles.controlDot} ${styles.dotRed}`} />
@@ -59,9 +42,7 @@ export default function ProjectCard3D({
           </div>
           <div className={styles.urlPill}>
             <span className={styles.urlProtocol}>https://</span>
-            <span className={styles.urlHost}>
-              {project.id}.rudransh.dev
-            </span>
+            <span className={styles.urlHost}>{project.id}.rudransh.dev</span>
           </div>
           <div className={styles.specStatusSeal}>
             <span className={styles.sealGlyph}>{isCompleted ? '◈' : '⟐'}</span>
@@ -69,7 +50,7 @@ export default function ProjectCard3D({
           </div>
         </div>
 
-        {/* Project Screenshot / Media */}
+        {/* Project Screenshot */}
         <div className={styles.mediaContainer}>
           {project.image ? (
             <Image
@@ -78,7 +59,7 @@ export default function ProjectCard3D({
               width={720}
               height={440}
               className={styles.screenshot}
-              priority={index < 2}
+              priority={index < 3}
             />
           ) : (
             <div className={styles.placeholderMedia}>
@@ -87,10 +68,10 @@ export default function ProjectCard3D({
             </div>
           )}
 
-          {/* Specular sheen / glass glare reflection */}
+          {/* Specular sheen */}
           <div className={styles.specularOverlay} aria-hidden="true" />
 
-          {/* Interactive Hover Reveal Overlay */}
+          {/* Hover Reveal Overlay */}
           <div className={styles.hoverOverlay}>
             <div className={styles.hoverMeta}>
               <span className={styles.categoryBadge}>{project.category}</span>
@@ -112,7 +93,7 @@ export default function ProjectCard3D({
               </div>
             </div>
 
-            {/* Quick Action Buttons (Live Demo & GitHub) */}
+            {/* Quick Action Buttons on Hover */}
             <div className={styles.cardActions} onClick={(e) => e.stopPropagation()}>
               {project.liveUrl && (
                 <a
@@ -153,21 +134,6 @@ export default function ProjectCard3D({
           <span className={styles.captionCategory}>{project.tag.split('/')[0]}</span>
         </div>
       </div>
-
-      {/* 3D Floor Reflection fading into dark void */}
-      <div className={styles.floorReflection} aria-hidden="true">
-        {project.image && (
-          <Image
-            src={project.image}
-            alt=""
-            width={720}
-            height={440}
-            className={styles.reflectionImage}
-          />
-        )}
-        <div className={styles.reflectionFade} />
-      </div>
     </div>
   );
 }
-

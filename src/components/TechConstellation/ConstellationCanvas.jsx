@@ -527,7 +527,6 @@ export default function ConstellationCanvas() {
                     strokeWidth={strokeWidth}
                     opacity={opacity}
                     strokeLinecap="round"
-                    filter={isLinkActive ? 'url(#beamGlow)' : undefined}
                     className={styles.connectionLine}
                   />
 
@@ -538,7 +537,6 @@ export default function ConstellationCanvas() {
                       cy={pY}
                       r={3.2}
                       fill="#ffffff"
-                      filter="url(#beamGlow)"
                       opacity={0.9}
                     />
                   )}
@@ -604,7 +602,6 @@ export default function ConstellationCanvas() {
                     strokeWidth={isSelected ? 1.8 : 1}
                     strokeOpacity={isSelected ? 0.7 : isHovered ? 0.45 : isConnected ? 0.3 : 0}
                     strokeDasharray={isSelected ? '4 3' : undefined}
-                    filter={isSelected || isHovered ? 'url(#nodeGlow)' : undefined}
                     className={isSelected ? styles.radarRing : ''}
                   />
 

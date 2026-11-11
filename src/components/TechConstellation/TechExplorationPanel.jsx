@@ -34,7 +34,7 @@ export default function TechExplorationPanel({
       <div className={styles.identity}>
         <div
           className={styles.iconWrap}
-          style={{ borderColor: category.border, boxShadow: `0 0 24px ${category.glow}` }}
+          style={{ borderColor: category.border }}
         >
           <TechIcon id={node.id} size={36} color={category.color} />
         </div>

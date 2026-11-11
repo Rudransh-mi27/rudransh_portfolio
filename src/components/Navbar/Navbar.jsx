@@ -75,7 +75,6 @@ export default function Navbar() {
                     className={`${styles.navLink} ${isActive ? styles.active : ''}`}
                   >
                     {item.label}
-                    {isActive && <span className={styles.activeDot} />}
                   </a>
                 </li>
               );
