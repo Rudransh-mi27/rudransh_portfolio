@@ -1,0 +1,309 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.documentCard {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  max-height: 88vh;
+  background: #f4eedf; /* Warm cream physical paper */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  border: 1px solid #dcd1ba;
+  border-radius: 16px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #1e1b18; /* Dark charcoal */
+  animation: documentExpand 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+
+  @media (max-width: 768px) {
+    max-height: 90vh;
+    border-radius: 12px;
+  }
+}
+
+@keyframes documentExpand {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Header */
+.docHeader {
+  height: 48px;
+  background: rgba(234, 226, 209, 0.9);
+  border-bottom: 1px solid #ddd1bb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  flex-shrink: 0;
+}
+
+.sealMark {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: #6a6152;
+  font-weight: 600;
+}
+
+.sealIcon {
+  color: #1e1b18;
+}
+
+.returnBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: rgba(30, 27, 24, 0.06);
+  border: 1px solid rgba(30, 27, 24, 0.15);
+  color: #1e1b18;
+  font-family: $font-mono;
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #1e1b18;
+    color: #f4eedf;
+  }
+}
+
+/* Document Scroll Body */
+.docBody {
+  flex: 1;
+  padding: 2.25rem 2.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(30, 27, 24, 0.2) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(30, 27, 24, 0.2);
+    border-radius: 3px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+}
+
+/* Title Block */
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.categoryPill {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: #786d5c;
+  font-weight: 600;
+}
+
+.docTitle {
+  font-family: $font-sans;
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #141210;
+  margin: 0;
+}
+
+.serifItalic {
+  font-family: $font-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #453e34;
+}
+
+.docDivider {
+  height: 1px;
+  background: #d8cdb7;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Narrative */
+.narrativeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.leadParagraph {
+  font-family: $font-sans;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  color: #1e1b18;
+  font-weight: 500;
+}
+
+.bodyParagraph {
+  font-family: $font-sans;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: #38322a;
+}
+
+.credoQuote {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  background: rgba(234, 226, 209, 0.5);
+  border: 1px solid #ded3be;
+  border-radius: 8px;
+  padding: 1.1rem 1.4rem;
+  margin: 0.4rem 0;
+}
+
+.quoteBar {
+  width: 3px;
+  background: #1e1b18;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.credoText {
+  font-family: $font-serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: #141210;
+  margin: 0;
+}
+
+/* Pillars */
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 0.5rem 0;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.pillarCard {
+  background: #ede4d2;
+  border: 1px solid #d8cdb7;
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  gap: 12px;
+}
+
+.pillarIcon {
+  color: #1e1b18;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pillarContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pillarTitle {
+  font-family: $font-sans;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #141210;
+  margin: 0;
+}
+
+.pillarDesc {
+  font-family: $font-sans;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #4a4237;
+  margin: 0;
+}
+
+/* Footer / Signature */
+.docFooter {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d8cdb7;
+  gap: 1.5rem;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+.signatureCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sigLabel {
+  font-family: $font-mono;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: #7d7260;
+  font-weight: 600;
+}
+
+.sigName {
+  font-family: $font-serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #141210;
+  letter-spacing: -0.01em;
+}
+
+.sigMeta {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: #5c5344;
+}
+
+.mottoCol {
+  text-align: right;
+
+  @media (max-width: 700px) {
+    text-align: left;
+  }
+}
+
+.mottoQuote {
+  font-family: $font-serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #38322a;
+}
+
