@@ -8,21 +8,58 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 0 40px;
+  padding: 40px 0 20px;
   perspective: 1200px;
 
   @media (max-width: 768px) {
-    padding: 40px 0 20px;
+    padding: 20px 0 10px;
   }
 }
 
 /* ==========================================================================
-   Central 3D Navy-Blue Envelope Container
+   Two-Column Composition: [ Envelope Left ] [ Avatar Right ]
    ========================================================================== */
+
+.compositionStage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+
+  @media (max-width: 1080px) {
+    gap: 2rem;
+    max-width: 960px;
+  }
+
+  @media (max-width: 860px) {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+/* Left Column: Interactive Navy-Blue Envelope Container */
+.envelopeColumn {
+  flex: 1;
+  max-width: 530px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+
+  @media (max-width: 860px) {
+    max-width: 500px;
+  }
+}
 
 .envelopeRoot {
   position: relative;
-  width: min(520px, 88vw);
+  width: 100%;
+  max-width: 510px;
   aspect-ratio: 1.8 / 1;
   transform-style: preserve-3d;
   cursor: pointer;
@@ -279,7 +316,150 @@
   display: block;
 }
 
+/* ==========================================================================
+   Right Column: Stable Superhero Avatar Guide with Comic Speech Bubble
+   ========================================================================== */
 
+.avatarColumn {
+  flex: 0 0 auto;
+  width: 330px;
+  max-width: 38%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 8;
+  will-change: opacity;
+  transition: opacity 0.4s ease;
+
+  @media (max-width: 1080px) {
+    width: 280px;
+  }
+
+  @media (max-width: 860px) {
+    width: 250px;
+    max-width: 80%;
+  }
+
+  &.avatarDimmed {
+    opacity: 0.05;
+    pointer-events: none;
+  }
+}
+
+.avatarFigure {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // Completely stable and stationary - no hover or floating animations
+}
+
+/* Comic-Style Speech Bubble (Scroll-Scrubbed) */
+.speechBubble {
+  position: absolute;
+  top: -26px;
+  right: -20px;
+  z-index: 25;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 18px 12px;
+  background-color: #f7f3e8; // Authentic warm cream comic balloon
+  border: 2.5px solid #000000;
+  border-radius: 36px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  pointer-events: none; // Does not interfere with user clicks
+  user-select: none;
+  -webkit-user-select: none;
+  transform-origin: bottom left;
+  will-change: opacity, filter, transform;
+  transition: opacity 0.12s linear, filter 0.12s linear, transform 0.12s linear;
+
+  @media (max-width: 1080px) {
+    top: -20px;
+    right: -12px;
+    padding: 8px 15px 10px;
+    gap: 3px;
+    border-width: 2px;
+  }
+
+  @media (max-width: 860px) {
+    top: -18px;
+    right: 0px;
+    padding: 7px 12px 9px;
+    border-radius: 28px;
+  }
+}
+
+.bubbleTextLine {
+  font-family: 'Silkscreen', 'Press Start 2P', 'SF Mono', Menlo, Monaco, monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #000000;
+  text-align: center;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+
+  @media (max-width: 1080px) {
+    font-size: 0.68rem;
+  }
+
+  @media (max-width: 860px) {
+    font-size: 0.62rem;
+  }
+}
+
+.speechTailSvg {
+  position: absolute;
+  bottom: -18px;
+  left: 26px;
+  width: 28px;
+  height: 20px;
+  overflow: visible;
+  pointer-events: none;
+
+  @media (max-width: 1080px) {
+    left: 20px;
+    bottom: -16px;
+    width: 24px;
+    height: 18px;
+  }
+}
+
+.avatarImage {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.75));
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+
+  @media (max-width: 1080px) {
+    max-height: 440px;
+  }
+
+  @media (max-width: 860px) {
+    max-height: 340px;
+  }
+}
+
+.avatarFloorShadow {
+  width: 70%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  margin-top: -10px;
+  filter: blur(4px);
+  pointer-events: none;
+}
 
 /* ==========================================================================
    Full Screen Expansion Modal Backdrop
@@ -311,4 +491,3 @@
     opacity: 1;
   }
 }
-
