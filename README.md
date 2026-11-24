@@ -100,9 +100,3 @@ npm run start
 - **GitHub**: [@Rudransh-mi27](https://github.com/Rudransh-mi27)
 - **LinkedIn**: [Rudransh Mishra](https://linkedin.com/in/rudransh-mishra-23a51031b)
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
